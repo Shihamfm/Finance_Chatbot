@@ -7,7 +7,4 @@ COPY . /app
 
 RUN pip install -r requirements.txt
 
-EXPOSE 8080
-
-# Start app with Gunicorn
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
+CMD ["python3", "app.py"]
