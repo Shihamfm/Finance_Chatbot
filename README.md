@@ -90,7 +90,8 @@ gcloud projects add-iam-policy-binding utility-ridge-464606-a1 \
 
 ```
 
-## Service Account and Permissions
-### 1. Create a service account (if not already created):
+### 4. Set up a Docker file
+
+### 5. Set up .github/workflows/cicd.yaml for GitHub Actions CI/CD
 
 
