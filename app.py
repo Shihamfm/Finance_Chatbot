@@ -66,6 +66,8 @@ except Exception as e:
     logging.error(f"Error initializing LangChain components: {e}")
     raise
 
+PORT = int(os.environ.get("PORT", 8080))  # Cloud Run sets PORT automatically
+
 # Routes
 
 @app.route("/")
@@ -88,4 +90,4 @@ def chat():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=PORT, debug=True)

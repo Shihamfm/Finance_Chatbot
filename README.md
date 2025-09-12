@@ -1,4 +1,4 @@
-# Finance_Chatbot
+# Finance_Chatbot - Complete-Finance-Chatbot-with-LLMs-LangChain-Pinecone-Flask-GCP
 
 ### STEP 1:
 
@@ -37,7 +37,7 @@ python store_index.py
 python app.py
 ```
 Now,
-```base
+```bash
 open up localhost:
 ```
 ## Techstack Used:
@@ -46,5 +46,51 @@ open up localhost:
 - Flask
 - GPT
 - Pinecone
+
+## GCP-CICD-Deployment-with-Github-Actions
+
+### 1. Enable required services
+```bash
+gcloud services enable artifactregistry.googleapis.com run.googleapis.com
+```
+### 2. Create Artifact Registry for Docker images
+```bash
+gcloud artifacts repositories create finace-chatbot-repo \
+  --repository-format=docker \
+  --location=us-central1 \
+  --description="Docker repo for CI/CD images"
+```
+## Service Account and Permissions
+### 1. Create a service account (if not already created):
+```bash
+gcloud iam service-accounts create github-cicd \
+  --description="Service Account for GitHub Actions CI/CD" \
+  --display-name="github-cicd"
+```
+### 2. Download the JSON key and add it to GitHub secrets as FINANCE_CHATBOT.
+### 3. Grant IAM roles for the service account
+
+```bash
+SA_EMAIL=finance-chatbot@utility-ridge-464606-a1.iam.gserviceaccount.com
+
+# Artifact Registry push permission
+gcloud projects add-iam-policy-binding utility-ridge-464606-a1 \
+  --member="serviceAccount:$SA_EMAIL" \
+  --role="roles/artifactregistry.writer"
+
+# Cloud Run deploy permission
+gcloud projects add-iam-policy-binding utility-ridge-464606-a1 \
+  --member="serviceAccount:$SA_EMAIL" \
+  --role="roles/run.admin"
+
+# Service Account User role (required for Cloud Run)
+gcloud projects add-iam-policy-binding utility-ridge-464606-a1 \
+  --member="serviceAccount:$SA_EMAIL" \
+  --role="roles/iam.serviceAccountUser"
+
+```
+
+## Service Account and Permissions
+### 1. Create a service account (if not already created):
 
 
