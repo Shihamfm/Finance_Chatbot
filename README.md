@@ -1,5 +1,15 @@
 # Finance_Chatbot - Complete-Finance-Chatbot-with-LLMs-LangChain-Pinecone-Flask-GCP
 
+![Alt text](images/web_interface.png)
+
+## Business Problem
+As part of supporting the Business Analysis team, I need to help them access insights from confidential documents—especially PDF files—in a way that’s fast, secure, and user-friendly. Their goal is to make strategic decisions that drive business transformation, and they need a solution that allows them to interact with these documents in a conversational manner.
+
+This project is focused on building a system that enables quick, natural-language responses from sensitive content, helping analysts get the information they need without delays or complexity. The interface must be intuitive, responsive, and respectful of data confidentiality, so they can focus on making informed decisions which not digging through files.
+
+## System Design
+![Alt text](images/system_design.png)
+
 ### STEP 1:
 
 Clone the repository
@@ -22,7 +32,7 @@ source finance_chatbot/Scripts/activate
 ```bash
 pip install -r requirements.txt
 ```
-## Create a .env file in the root directory and add the Pinecone & openai credentials as follows:
+### STEP 4 -  Create a .env file in the root directory and add the Pinecone & openai credentials as follows:
 ```bash
 PINECONE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 OPENAI_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -87,11 +97,8 @@ gcloud projects add-iam-policy-binding utility-ridge-464606-a1 \
 gcloud projects add-iam-policy-binding utility-ridge-464606-a1 \
   --member="serviceAccount:$SA_EMAIL" \
   --role="roles/iam.serviceAccountUser"
-
 ```
 
 ### 4. Set up a Docker file
 
 ### 5. Set up .github/workflows/cicd.yaml for GitHub Actions CI/CD
-
-
